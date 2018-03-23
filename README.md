@@ -1,1 +1,1 @@
-# Datenbank-Engineering Ausarbeitung: Blockchain
+# Blockchain als verteiltes Datenbankmanagementsystem
