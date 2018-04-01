@@ -6,6 +6,7 @@ Die Blockchain ist eine verkette Liste von Blöcken, welche mithilfe von kryptog
 
 \subsection{Transaktionsablauf}
 \label{subsec:transaktionsablauf}
+Eine Transaktion ist eine Arbeitseinheit, welche eine bestimmte Funktion erf{\"u}llt. In Bezug auf Datenbanksysteme bezeichnet eine Transaktion eine Folge von Datenverarbeitungsbefehlen, die vom System atomar ausgef{\"u}hrt werden.\footnote{\cite[S.~301]{Kemper.2006}} Im Kontext der Blockchain bezeichnet eine Transaktion die Persistierung von Daten, wie beispielsweise einer {\"U}berweisung von Person a zu Person b.\footnote{\cite[S.~2]{SatoshiNakamoto.}} Abbildung \ref{fig:transaktionsablauf} beschreibt den einfachen Transaktionsablauf einer Blockchain.
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{transaktions-ablauf.png}
@@ -13,24 +14,19 @@ Die Blockchain ist eine verkette Liste von Blöcken, welche mithilfe von kryptog
 	\label{fig:transaktionsablauf}
 \end{figure}
 
-Zunächst wird die durchzuführende Transaktion im Netzwerk verteilt. Anschließend fassen die Netzwerkteilnehmer mehrere Transaktionen zu einem Block zusammen und versuchen durch eine Konsensbildung die Transaktionen zu validieren. Die Validierung findet bei der Blockchain-Technologie mit dem sogenannten Proof-Of-Work statt, welche es fordert das aus den Transaktionen und dem vorherigen Block ein Hash-Wert mit einer bestimmten Voraussetzung gebildet wird. Nachdem ein Netzwerkteilnehmer ein validen Hash-Wert ermittelt hat, werden der Block an die Kette angehangen und im Netzwerk verteilt. Alle anderen Teilnehmer überprüfen die Erweiterung der Kette. Falls die neue Blockchain nicht den Ansprüchen der Voraussetzung entspricht, wird die Erweiterung abgelehnt und die vorherige Kette zurückgegeben, andernfalls wird die erweiterte Blockchain übernommen. Anschließend ist die Transaktion erfolgreich durchgeführt.
+Zunächst wird die durchzuführende Transaktion im Netzwerk verteilt. Anschließend fassen die Netzwerkteilnehmer mehrere Transaktionen zu einem Block zusammen und versuchen durch eine Konsensbildung die Transaktionen zu validieren. Die Validierung findet bei der Blockchain-Technologie mit dem sogenannten Proof-Of-Work statt, welche es fordert das aus den Transaktionen und dem vorherigen Block ein Hash mit einer bestimmten Voraussetzung gebildet wird (beispielsweise zehn führende Nullen). Nachdem ein Netzwerkteilnehmer ein validen Hash ermittelt hat, werden der Block an die Kette angehangen und im Netzwerk verteilt. Alle anderen Teilnehmer überprüfen die Erweiterung der Kette. Falls die neue Blockchain nicht den Ansprüchen der Voraussetzung entspricht, wird die Erweiterung abgelehnt und die vorherige Kette zurückgegeben, andernfalls wird die erweiterte Blockchain übernommen. Anschließend ist die Transaktion erfolgreich durchgeführt.
 
 
 \subsection{Blockaufbau}
 \label{subsec:blockaufbau}
-Ein Block besteht aus dem vorherigen Block-Hash-wert, den Transaktionen und dem neuen Hash-wert. Die Verkettung der Blöcke findet über den vorherigen Block-hashwert statt, indem der 
+Grundsätzlich besteht ein Block einer Blockchain aus den Transaktionen und Informationen über den aktuellen Block. Mithilfe der Merkle-Root wird aus den einzelnen Transaktionen ein Hashwert ermittelt, jener anschließend in Kombination mit dem vorherigen Blockhash und der freiwählbaren Nonce den Hash des aktuellen Blockes bildet. Mithilfe dieser Einbindung des vorherigen Hash wird die Kette fest miteinander verbunden.
 
-Hash eines Blockes besteht aus
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{blockaufbau.png}
+	\caption{Blockaufbau. Quelle: Satoshi Nakamoto}
+	\label{fig:blockaufbau}
+\end{figure}
 
--- Hash des vorherigen Blockes
-
--- Merkle-Root = Hash-Tree aus mehrere Transaktionen
-
--- Nonce = frei wählbarer Wert, um die Anforderung der Blockchain zu bewerkstelligen
-
-
-
--- Transaktionen
 
 \subsection{Proof-Of-Work}
 \label{subsec:proofofwork}
